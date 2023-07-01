@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Todoitem } from "./Todoitem";
 import {v4 as uuid} from 'uuid';
 
@@ -57,12 +57,13 @@ export function Todolist(){
     const cambiarEstadoTarea=(id)=>{
 
         const newTodos=[...todos];
-        const todo=newTodos.fund((todo)=>todo.id===id);
+        const todo=newTodos.find((todo)=>todo.id===id);
         todo.complete=!todo.complete;
         setTodos(newTodos);
     }
     const eliminarTareasCompletadas=()=>{
         const newTodos=todos.filter((todo)=>!todo.complete);
+        setTodos(newTodos);
     }
     return (
         <>
